@@ -12,14 +12,14 @@ app.listen(3001, () => {
 });
 ```
 
-##### GET request middleware
+##### GET request route
 ```javascript
 // replace "/" with your own path
 app.get('/path', (request, response) => {
 });
 ```
 
-##### GET request middleware with parameters
+##### GET request route with parameters
 ```javascript
 // replace "/path" with your own path
 // replace ":param1" with your own param
@@ -29,7 +29,7 @@ app.get('/path/:param1', (request, response) => {
 });
 ```
 
-##### GET request middleware with query parameters
+##### GET request route with query parameters
 ```javascript
 // replace "/path" with your own path
 app.get('/path', (request, response) => {
@@ -37,7 +37,7 @@ app.get('/path', (request, response) => {
 });
 ```
 
-##### Using a Route
+##### Using a Route application
 ```javascript
 // don't forget to import your router if you stored it in a separate file!
 // replace "/path" with your own path
