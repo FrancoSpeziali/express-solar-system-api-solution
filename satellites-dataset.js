@@ -9,7 +9,7 @@
 // magnitude: Magnitude V0 or R
 // albedo: Geometric Albedo
 
-modules.exports = [
+module.exports = [
     {
         "id": 1,
         "planetId": 3,

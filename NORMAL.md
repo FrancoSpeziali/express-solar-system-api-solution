@@ -16,7 +16,7 @@ Use the snippet **starter code** to initialise your `server.js` file
 
 Your server will have to respond to requests asking for a variety of information about the solar system
 
-> Remember: Your API will be reading from 2 datesets, planets and satellites
+> Remember: Your API will be reading from 2 datasets, planets and satellites
 
 Because you are using 2 different datasets, you can expect 2 different types of requests
 
@@ -45,67 +45,46 @@ For each of the following steps, make sure your route handler:
 - Returns a status code of `500` if the request was malformed (the request was not in the expected format)
 - Use either the **GET request route with parameters** or the **GET request route with query parameters** snippet
 
-### 4.1
+### 4.1 Find a satellite by name
 
-Write a route handler which responds to either of the following requests:
+- Return a satellite by **name**
+- Write a route handler which responds to either of the following requests:
+    
+    > `http://localhost:3001/satellite/find/{name}`
+    OR
+    > `http://localhost:3001/satellite/find?name={name}`
 
-> `http://localhost:3001/satellite/{name}`
+    (`{name}` is a **param** with the name the client is trying to query)
 
-OR
+- Return all details of the satellite as a JSON response. For example:
+    > { "id": 1, "name": "Elfo", ... }
 
-> `http://localhost:3001/satellite?name={name}`
+### 4.2 Find the largest or smallest satellite
 
-Where `{name}` should be replaced with the name the client is trying to query
+- Return a satellite by **radius**
+- Write a route handler which responds to either of the following requests:
 
-This route handler should return all details of the satellite as a JSON response. For example:
+    > `http://localhost:3001/satellite/size/{pick}`
+    OR
+    > `http://localhost:3001/satellite/size?{pick}`
 
-> { "id": 1, "name": "Elfo", ... }
+    (`{pick}` is a **param** with either the values `largest` or `smallest`)
 
-### 4.2
-
-For the following, the route handlers should:
-
-- return a text response, where there is a single response, for example:
-
+- Return a text response, for example:
     > "The satellite with the largest radius is Elfo, with a size of 9394 km"
 
-- return a JSON array of objects, where there are multiple responses, for example:
+### 4.3 Find the densest or least dense satellite
 
-    > [ { "id": 1, "name": "Elfo" ... } ... ]
+- Return a satellite by **density**
+- Write a route handler which responds to either of the following requests:
 
-Create route handlers based on the following criteria:
+  > `http://localhost:3001/satellite/density/{pick}`
+  OR
+  > `http://localhost:3001/satellite/density?{pick}`
 
-1. returns the satellite with the largest radius **radius**
+  (`{pick}` is a **param** with either the values `highest` or `lowest`)
 
-    > `http://localhost:3001/satellite/size/largest/`
-    
-    OR
-    
-    > `http://localhost:3001/satellite/size?largest`
-
-2. returns the satellite with the smallest radius **radius**
-
-   > `http://localhost:3001/satellite/size/smallest/`
-
-   OR
-
-   > `http://localhost:3001/satellite/size?smallest`
-
-3. returns the satellite with the highest **density**
-
-    > `http://localhost:3001/satellite/density/highest/`
-    
-    OR
-    
-    > `http://localhost:3001/satellite/density?highest`
-
-4. returns the satellite with the lowest **density**
-
-   > `http://localhost:3001/satellite/density/lowest/`
-
-   OR
-
-   > `http://localhost:3001/satellite/density?lowest`
+- Return a text response
 
 # Task 5 - Creating route handlers for the planets dataset
 
@@ -116,128 +95,99 @@ For each of the following steps, make sure your route handler:
 - Returns a status code of `500` if the request was malformed (the request was not in the expected format)
 - Use either the **GET request route with parameters** or the **GET request route with query parameters** snippet
 
-### 5.1
+### 5.1 Find a planet by name
 
-Write a route handler which responds to either of the following requests:
+- Return a planet by **name**
+- Write a route handler which responds to either of the following requests:
 
-> `http://localhost:3001/planet/{name}`
+  > `http://localhost:3001/planet/find/{name}`
+  OR
+  > `http://localhost:3001/planet/find?name={name}`
 
-OR
+  (`{name}` is a **param** with the name the client is trying to query)
 
-> `http://localhost:3001/planet?name={name}`
+- Return all details of the planet as a JSON response. For example:
+    > { "id": 1, "name": "Earth", ... }
 
-Where `{name}` should be replaced with the name the client is trying to query
+### 5.2 Find the largest or smallest planet
 
-This route handler should return all details of the satellite as a JSON response. For example:
+- Return a planet by **radius**
+- Write a route handler which responds to either of the following requests:
 
-> { "id": 1, "name": "Earth", ... }
+  > `http://localhost:3001/planet/size/{pick}`
+  OR
+  > `http://localhost:3001/planet/size?{pick}`
 
-### 5.2
+  (`{pick}` is a **param** with either the values `largest` or `smallest`)
 
-For the following, the route handlers should:
+- Return a text response, for example:
+  > "The planet with the largest radius is Gandalf, with a size of 9394 km"
 
-- return a text response, where there is a single response, for example:
+## 5.3 Find the planets with the most and least moons
 
-    > "The planet with the most moons is Earth, with a 450 moons"
+- Return a planet by **numberOfMoons**
+- Write a route handler which responds to either of the following requests:
 
-- return a JSON array of objects, where there are multiple responses, for example:
+  > `http://localhost:3001/planet/moons/{pick}`
+  OR
+  > `http://localhost:3001/planet/moons?{pick}`
 
-    > [ { "id": 1, "name": "Earth" ... } ... ]
+  (`{pick}` is a **param** with either the values `most` or `none`)
 
-Create route handlers based on the following criteria:
+- For the *most* moons, return a text response, for example:
+  > "The planet with the most moons is Earth, with a 450 moons"
 
-1. returns the largest planet **diameter**
+- For planets with no moons, return an array of names (strings), for example:
+  > [ "Earth", "Pluto" ... ]
 
-   > `http://localhost:3001/planet/size/largest/`
+## 5.4 Find the planets closest to and furthest from the sun
 
-   OR
+- Return a planet by **distanceFromSun**
+- Write a route handler which responds to either of the following requests:
 
-   > `http://localhost:3001/planet/size?largest`
+  > `http://localhost:3001/planet/sun/{pick}`
+  OR
+  > `http://localhost:3001/planet/sun?{pick}`
 
-2. returns the smallest planet **smallest**
+  (`{pick}` is a **param** with either the values `closest` or `furthest`)
 
-   > `http://localhost:3001/planet/size/smallest/`
+- Return a text response
 
-   OR
+## 5.5 Find the hottest and coldest planets
 
-   > `http://localhost:3001/planet/size?smallest`
+- Return a planet by **meanTemperature**
+- Write a route handler which responds to either of the following requests:
 
-3. returns planets with no moons **numberOfMoons**
+  > `http://localhost:3001/planet/temperature/{pick}`
+  OR
+  > `http://localhost:3001/planet/temperature?{pick}`
 
-   > `http://localhost:3001/planet/moons/none`
+  (`{pick}` is a **param** with either the values `hottest` or `coldest`)
 
-   OR
+- Return a text response
 
-   > `http://localhost:3001/planet/moons?none`
+## 5.6 Find the planets with the longest and shortest day
 
-4. returns the planet with the most moons **numberOfMoons**
+- Return a planet by **lengthOfDay**
+- Write a route handler which responds to either of the following requests:
 
-   > `http://localhost:3001/planet/moons/most`
+  > `http://localhost:3001/planet/day/{pick}`
+  OR
+  > `http://localhost:3001/planet/day?{pick}`
 
-   OR
+  (`{pick}` is a **param** with either the values `longest` or `shortest`)
 
-   > `http://localhost:3001/planet/moons?most`
+- Return a text response
 
-5. returns the planet closest to the sun **distanceFromSun**
+## 5.7 Find the planets with the longest and shortest day
 
-   > `http://localhost:3001/planet/sun/closest`
+- Return a planet by the **orbitalPeriod**
+- Write a route handler which responds to either of the following requests:
 
-   OR
+  > `http://localhost:3001/planet/orbit/{pick}`
+  OR
+  > `http://localhost:3001/planet/orbit?{pick}`
 
-   > `http://localhost:3001/planet/sun?closest`
-   
-6. returns the planet furthest from the sun **distanceFromSun**
+  (`{pick}` is a **param** with either the values `longest` or `shortest`)
 
-   > `http://localhost:3001/planet/sun/furthest`
-
-   OR
-
-   > `http://localhost:3001/planet/sun?furthest`
-
-7. returns the hottest planet **meanTemperature**
-
-   > `http://localhost:3001/planet/temperature/hottest`
-
-   OR
-
-   > `http://localhost:3001/planet/temperature?hottest`
-
-8. returns the coldest planet **meanTemperature**
-
-   > `http://localhost:3001/planet/temperature/coldest`
-
-   OR
-
-   > `http://localhost:3001/planet/temperature?coldest`
-
-9. returns the planet with the longest day **lengthOfDay**
-
-   > `http://localhost:3001/planet/day/longest`
-
-   OR
-
-   > `http://localhost:3001/planet/day?longest`
-
-10. returns the planet with the shortest day **lengthOfDay**
-
-    > `http://localhost:3001/planet/day/shortest`
-    
-    OR
-    
-    > `http://localhost:3001/planet/day?shortest`
-
-11. return the planet with the longest orbital period **orbitalPeriod**
-
-    > `http://localhost:3001/planet/orbit/longest`
-
-    OR
-
-    > `http://localhost:3001/planet/orbit?longest`
-
-12. return the planet with the shortest orbital period **orbitalPeriod**
-
-    > `http://localhost:3001/planet/orbit/shortest`
-
-    OR
-
-    > `http://localhost:3001/planet/orbit?shortest`
+- Return a text response

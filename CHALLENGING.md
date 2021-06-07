@@ -18,7 +18,7 @@ Take a moment to think about the structure of the URL you would like the request
 
 Use the following questions to help you decide how to design your API
 
-> Remember: Your API will be reading from 2 datesets, planets and satellites
+> Remember: Your API will be reading from 2 datasets, planets and satellites
 
 - Do the 2 datasets have anything in common?
 
