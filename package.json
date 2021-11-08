@@ -1,0 +1,24 @@
+{
+  "name": "express-solar-system-api",
+  "version": "1.0.0",
+  "description": "This project will have you building an API for accessing datasets about our solar system",
+  "main": "planets-dataset.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrancoSpeziali/express-solar-system-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FrancoSpeziali/express-solar-system-api/issues"
+  },
+  "homepage": "https://github.com/FrancoSpeziali/express-solar-system-api#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "reveal.js-plugins": "^4.1.5"
+  }
+}
